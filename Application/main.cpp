@@ -2,28 +2,58 @@
 #include "Application/LedControl/button.hpp"
 #include "Application/LedControl/led.hpp"
 
+typedef enum {
+    BOTH_OFF = 0,
+    LED3_ON,
+    LED4_ON,
+    BOTH_ON
+} LedState;
+LedState current_state = BOTH_OFF;
+
+Button button(board_btn_pin);
+Led led3(board_led3_pin);
+Led led4(board_led4_pin);
+
+void switch_state(LedState state, Led& led3, Led& led4) {
+    switch (state) {
+        case BOTH_OFF:
+            led3.turn_off();
+            led4.turn_off();
+            break;
+        case LED3_ON:
+            led3.turn_on();
+            led4.turn_off();
+            break;
+        case LED4_ON:
+            led4.turn_on();
+            led3.turn_off();
+            break;
+        case BOTH_ON:
+            led3.turn_on();
+            led4.turn_on();
+            break;
+    }
+
+}
+
 int main() {
     // 1. Initialize MCU
     board_init();
 
-    // 2. Retrieve hardware instances from Board (Interfaces only)
-    IGpioPin* btn_pin = board_get_button_pin();
-    IGpioPin* led_pin = board_get_led_pin();
-
-    // 3. Inject into Application Logic
-    Button my_button(btn_pin);
-    Led my_led(led_pin);
-
-    // 4. Main loop
-    uint32_t current_time = 0;
+    // 2. Main loop
+    uint8_t flag = 0;
     while (1) {
-        current_time = HAL_GetTick(); // Hint: You can create an ITime interface for this as well
-        my_button.update(current_time);
+        switch_state(current_state, led3, led4);
 
-        if (my_button.is_pressed()) {
-            my_led.turn_on();
-        } else {
-            my_led.turn_off();
+        button.update(HAL_GetTick());
+        if (button.is_pressed() && !flag) {
+            // Cycle through states on each button press
+            flag = 1;
+            current_state = static_cast<LedState>((current_state + 1) % 4);
         }
+        if(!button.is_pressed()) {
+            flag = 0;
+        }
+
     }
 }

@@ -17,10 +17,11 @@ void board_init(void);
 // Include C++ Interfaces
 #include "Application/Interfaces/gpio_interface.hpp"
 
+#include "Drivers/Peripherals/inc/gpio.hpp"
 // Declare functions that provide hardware objects (returns Interface only)
-IGpioPin* board_get_button_pin();
-IGpioPin* board_get_led_pin();
-
+extern Stm32Gpio board_btn_pin;
+extern Stm32Gpio board_led3_pin;
+extern Stm32Gpio board_led4_pin;
 #endif
 
 #endif // __BOARD_H__

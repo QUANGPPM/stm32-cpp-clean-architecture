@@ -7,7 +7,7 @@ public:
     virtual ~IGpioPin() = default;
     
     virtual void write(bool state) = 0;
-    virtual bool read() = 0;            
+    virtual bool read() const = 0;            
     virtual void toggle() = 0;         
 };
 

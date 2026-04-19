@@ -5,17 +5,28 @@
 
 class Led {
 public:
-    // Inject IGpioPin vào qua constructor
-    Led(IGpioPin* pin);
+    // Inject IGpioPin via reference in the constructor
+    // Defined here, it becomes implicitly inline
+    Led(IGpioPin& pin) : pin_(pin) {}
 
-    void turn_on();
-    void turn_off();
-    void toggle();
-    bool is_on();
+    void turn_on() {
+        pin_.write(true); 
+    }
+
+    void turn_off() {
+        pin_.write(false);
+    }
+
+    void toggle() {
+        pin_.toggle();
+    }
+
+    bool is_on() const {
+        return pin_.read(); // Read the current state of the LED
+    }
 
 private:
-    IGpioPin* pin_;
-    bool current_state_;
+    IGpioPin& pin_;
 };
 
 #endif // __LED_HPP

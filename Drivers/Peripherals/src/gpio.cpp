@@ -1,16 +1,6 @@
 #include "Drivers/Peripherals/inc/gpio.hpp"
 
-Stm32Gpio::Stm32Gpio(GPIO_TypeDef* port, uint16_t pin) 
-    : port_(port), pin_(pin) {}
-
-void Stm32Gpio::write(bool state) {
-    HAL_GPIO_WritePin(port_, pin_, state ? GPIO_PIN_SET : GPIO_PIN_RESET);
-}
-
-bool Stm32Gpio::read() {
-    return HAL_GPIO_ReadPin(port_, pin_) == GPIO_PIN_SET;
-}
-
-void Stm32Gpio::toggle() {
-    HAL_GPIO_TogglePin(port_, pin_);
-}
+// All method bodies have been moved to the header file (gpio.hpp)
+// to allow for inlining by the compiler. This is a common technique
+// for achieving zero-cost abstractions with small functions.
+// This .cpp file can now be left empty or even removed from the build if desired.

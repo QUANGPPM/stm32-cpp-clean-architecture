@@ -31,7 +31,9 @@ project(STM32_Learning C CXX ASM)
 set(CPU_FLAGS "-mcpu=cortex-m0 -mthumb")
 
 # Enable optimization -O0 for Debug, and common warning flags
-set(COMMON_FLAGS "${CPU_FLAGS} -O0 -g3 -Wall -fdata-sections -ffunction-sections")
+# -O0: No optimization (for debugging)
+# -Os: Optimize for size (recommended for release)
+set(COMMON_FLAGS "${CPU_FLAGS} -Os -g3 -Wall -fdata-sections -ffunction-sections")
 
 set(CMAKE_C_FLAGS "${COMMON_FLAGS}" CACHE INTERNAL "C Compiler options")
 # Disable exceptions and rtti in C++ to reduce binary size (embedded standard)

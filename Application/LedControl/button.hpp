@@ -6,12 +6,12 @@
 
 class Button {
 public:
-    Button(IGpioPin* pin) : pin_(pin) {}
+    Button(IGpioPin& pin);
     void update(uint32_t current_time_ms);
-    bool is_pressed();
+    bool is_pressed() const;
 
 private:
-    IGpioPin* pin_; 
+    IGpioPin& pin_; 
 
     uint8_t btn_current_ = 0;
     uint8_t btn_last_ = 0;
