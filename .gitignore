@@ -1,0 +1,35 @@
+# --- CMake ---
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.cmake
+
+# --- Compiled Output ---
+*.elf
+*.hex
+*.bin
+*.map
+*.obj
+*.o
+*.d
+*.srec
+*.list
+
+# --- VS Code ---
+.vscode/.cortex-debug.registers.state.json
+.vscode/ipch/
+.vscode/browse.vc.db
+.vscode/canvas.json
+# Note: Do not ignore .vscode/ entirely to keep launch.json and c_cpp_properties.json
+# so that others can debug the project immediately.
+
+# --- Temporary/Log files ---
+*.log
+*.tmp
+*.bak
+
+# --- OS specific ---
+.DS_Store
+Thumbs.db
