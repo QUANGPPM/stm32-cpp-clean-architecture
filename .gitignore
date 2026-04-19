@@ -24,7 +24,7 @@ Makefile
 .vscode/canvas.json
 # Note: Do not ignore .vscode/ entirely to keep launch.json and c_cpp_properties.json
 # so that others can debug the project immediately.
-
+.cache/
 # --- Temporary/Log files ---
 *.log
 *.tmp

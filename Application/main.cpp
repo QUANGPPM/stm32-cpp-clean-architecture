@@ -1,5 +1,4 @@
 #include "Board/v1/board.hpp"
-// No need to include "Drivers/Peripherals/gpio.hpp" anymore!
 #include "Application/LedControl/button.hpp"
 #include "Application/LedControl/led.hpp"
 

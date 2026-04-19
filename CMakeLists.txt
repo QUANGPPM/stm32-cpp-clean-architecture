@@ -1,5 +1,16 @@
 cmake_minimum_required(VERSION 3.16)
 
+# --- Usage Instructions ---
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# 1. Configure: cmake -B build -G "MinGW Makefiles"
+# 2. Build:     cmake --build build
+# 3. Flash:     cmake --build build --target flash
+# 4. Clean:     cmake --build build --target clean
+# 5. Reset:     Remove-Item -Recurse -Force build (PowerShell)
+# --------------------------
+
+
 # --- Toolchain Configuration ---
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR arm)
