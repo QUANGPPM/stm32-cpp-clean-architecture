@@ -1,7 +1,7 @@
 #include "Board/v1/board.hpp"
 #include "Application/LedControl/button.hpp"
 #include "Application/LedControl/led.hpp"
-
+#include "Application/Interfaces/itime_source.hpp"
 typedef enum {
     BOTH_OFF = 0,
     LED3_ON,
@@ -13,6 +13,7 @@ LedState current_state = BOTH_OFF;
 Button button(board_btn_pin);
 Led led3(board_led3_pin);
 Led led4(board_led4_pin);
+TimeSource time_source;
 
 void switch_state(LedState state, Led& led3, Led& led4) {
     switch (state) {
@@ -45,7 +46,7 @@ int main() {
     while (1) {
         switch_state(current_state, led3, led4);
 
-        button.update(HAL_GetTick());
+        button.update(time_source.get_tick_ms());
         if (button.is_pressed() && !flag) {
             // Cycle through states on each button press
             flag = 1;

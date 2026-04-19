@@ -1,13 +1,13 @@
-#ifndef __STM32GPIO_HPP
-#define __STM32GPIO_HPP
+#ifndef __GPIO_HPP
+#define __GPIO_HPP
 
 #include "stm32f0xx_hal.h"
 #include "Application/Interfaces/igpio.hpp"
 
-class Stm32Gpio : public IGpioPin {
+class Gpio : public IGpioPin {
 public:
     // NOTE: Port and Pin are ONLY provided via the Constructor
-    Stm32Gpio(GPIO_TypeDef* port, uint16_t pin) 
+    Gpio(GPIO_TypeDef* port, uint16_t pin) 
         : port_(port), pin_(pin) {}
     
     // Implementation of the Interface methods
@@ -30,4 +30,4 @@ private:
     uint16_t pin_;
 };
 
-#endif // __STM32GPIO_HPP
+#endif // __GPIO_HPP
