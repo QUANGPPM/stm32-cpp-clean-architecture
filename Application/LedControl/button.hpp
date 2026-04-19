@@ -1,7 +1,7 @@
 #ifndef __BUTTON_H
 #define __BUTTON_H
 
-#include "gpio_interface.hpp"
+#include "Application/Interfaces/igpio.hpp"
 #include <cstdint>
 
 class Button {

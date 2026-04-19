@@ -2,7 +2,7 @@
 #define __STM32GPIO_HPP
 
 #include "stm32f0xx_hal.h"
-#include "Application/Interfaces/gpio_interface.hpp"
+#include "Application/Interfaces/igpio.hpp"
 
 class Stm32Gpio : public IGpioPin {
 public:

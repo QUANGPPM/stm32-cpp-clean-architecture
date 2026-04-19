@@ -15,7 +15,7 @@ void board_init(void);
 }
 
 // Include C++ Interfaces
-#include "Application/Interfaces/gpio_interface.hpp"
+#include "Application/Interfaces/igpio.hpp"
 
 #include "Drivers/Peripherals/inc/gpio.hpp"
 // Declare functions that provide hardware objects (returns Interface only)

@@ -1,7 +1,7 @@
 #ifndef __LED_HPP
 #define __LED_HPP
 
-#include "Application/Interfaces/gpio_interface.hpp"
+#include "Application/Interfaces/igpio.hpp"
 
 class Led {
 public:
